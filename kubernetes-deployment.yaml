@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-deployment
+  labels:
+    app: iris
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: iris
+  template:
+    metadata:
+      labels:
+        app: iris
+    spec:
+      containers:
+      - name: iris
+        image: <dockerHubUsername>/<imageName> #update with your dockerhub image
+        ports:
+        - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prediction-port
+spec:
+  selector:
+    app: iris
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      nodePort: 30179

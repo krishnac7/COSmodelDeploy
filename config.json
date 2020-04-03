@@ -1,0 +1,6 @@
+{
+    "endpoint_url":"https://s3.<region-of-bucket>.objectstorage.softlayer.net",
+    "aws_access_key_id":"<COS access Key>",
+    "aws_secret_access_key":"<COS Key>",
+    "bucketName":"<name of your bucket>"
+}
