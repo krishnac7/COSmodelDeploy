@@ -3,7 +3,7 @@ COPY ./app.py /deploy/
 COPY ./requirements.txt /deploy/
 COPY ./get_model.py /deploy/
 WORKDIR /deploy/
-RUN pip install -r requirements.txt
+RUN pip install --quiet -r requirements.txt
 RUN mkdir models
 COPY ./config.json /deploy/
 RUN python get_model.py

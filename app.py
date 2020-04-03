@@ -6,7 +6,7 @@ from flask import Flask, request
 
 model = None
 app = Flask(__name__)
-
+labels = ['Iris Setosa', 'Iris Versicolour', 'Iris Virginica']
 
 def load_model():
     global model
@@ -17,7 +17,7 @@ def load_model():
 
 @app.route('/')
 def home_endpoint():
-    return 'Hello World!'
+    return 'Its Alivee!'
 
 
 @app.route('/predict', methods=['POST'])
@@ -27,7 +27,7 @@ def get_prediction():
         data = request.get_json()  # Get data posted as a json
         data = np.array(data)[np.newaxis, :]  # converts shape from (4,) to (1, 4)
         prediction = model.predict(data)  # runs globally loaded model on the data
-    return str(prediction[0])
+    return str(labels[prediction[0]])
 
 
 if __name__ == '__main__':
